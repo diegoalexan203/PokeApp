@@ -24,13 +24,14 @@ namespace PokemonApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/Pokemons");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<ListPokemonPage>("Pokemons");
+            containerRegistry.RegisterForNavigation<DetallePokemonPage>();
         }
     }
 }

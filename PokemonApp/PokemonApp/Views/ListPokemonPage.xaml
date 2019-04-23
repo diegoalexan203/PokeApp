@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="PokemonApp.Views.ListPokemonPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame>
+                <Label Text="Demo Pokemon" FontSize="Large" HorizontalOptions="CenterAndExpand"  TextColor="Chocolate"/>
+            </Frame>
+
+            <ListView ItemsSource="{Binding PokemonDetalleDtos}" SelectedItem="{Binding PokemonSelect, Mode=TwoWay}" Margin="30,20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout
+                                Padding="20,0,20,0"
+                                Orientation="Horizontal"
+                                HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding name}" FontSize="Medium"></Label>
+                                    <Button Text="Detalle">
+                                        <Button.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ButtonCommand}"></TapGestureRecognizer>
+                                        </Button.GestureRecognizers>
+                                    </Button>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Command="{Binding NavigateCommand}" IsEnabled="{Binding IsEnable}" Text="Navegar"  Style="{StaticResource buttonStyle}" ></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
